@@ -1,9 +1,8 @@
-{ lib, ... }:
+{ ... }:
 
 {
-  hardware.asahi = {
-    enable = true;
-    extractFirmware = false;
-  };
+  imports = [
+    ./userOptions.nix
+  ];
 }
 

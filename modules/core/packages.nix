@@ -2,7 +2,6 @@
   {
 
   programs = {
-    firefox.enable = false; # Firefox is not installed by defualt
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
@@ -33,18 +32,11 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs;[
-    # android-tools
-    #amfora # Fancy Terminal Browser For Gemini Protocol
-    #appimage-run # Needed For AppImage Support
+    coreutils-full
     brightnessctl # For Screen Brightness Control
     cmatrix # Matrix Movie Effect In Terminal
     docker-compose # Allows Controlling Docker From A Single File
-    #duf # Utility For Viewing Disk Usage In Terminal
-    #eza # Beautiful ls Replacement
-    #ffmpeg # Terminal Video / Audio Editing
     file-roller # Archive Manager
-    #gedit # Simple Graphical Text Editor
-    #gimp # Great Photo Editor
     tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     thunar-archive-plugin
     thunar-volman
@@ -78,23 +70,16 @@
     wget
     ytmdl
     jetbrains.rider
-    ollama-cuda
-    #nvidia-system-monitor-qt
     efibootmgr
     floorp-bin
-    #spotify
     thunderbird
     liquidctl
     vesktop
     teams-for-linux
-    flatpak
     sysstat
     vulkan-tools
-    #heroic
     nodejs
     docker-client
-    pdfstudioviewer
-    blender
     git-lfs
     neovim
 
@@ -102,7 +87,6 @@
     remmina
     openvpn3
 
-    #NAS
     
   ];
 }
