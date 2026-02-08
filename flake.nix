@@ -39,7 +39,7 @@
           ./hardware-configuration.nix
           ./apple-silicon-support
           ./modules/core
-          #./profiles/macbook
+          ./profiles/macbook
         ];
       };
     };
