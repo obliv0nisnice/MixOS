@@ -13,7 +13,7 @@
     ./user.nix
     ./virtualisation.nix
     ./xdg.nix
-    #./NixOS-Sec-Toolbox
+    ./NixOS-Sec-Toolbox
     inputs.stylix.nixosModules.stylix
     ./customConf
   ];

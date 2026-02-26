@@ -6,12 +6,11 @@
   environment.systemPackages = with pkgs; [
     cantoolz
     chipsec
-    cmospwd
     esptool
     extrude
     gallia
     hachoir
-    nrfutil #needs special license
+    #nrfutil #needs special license
     packetry
     teensy-loader-cli
     termineter

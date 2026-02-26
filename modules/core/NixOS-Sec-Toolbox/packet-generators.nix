@@ -9,7 +9,7 @@
     fping
     hping
     ostinato
-    pktgen
+    #pktgen
     python3Packages.scapy
   ];
 }

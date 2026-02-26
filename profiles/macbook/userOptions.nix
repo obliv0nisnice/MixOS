@@ -2,7 +2,7 @@
   environment.systemPackages = with pkgs; [
 
   ];
-  # NixOS-Sec-Toolbox.enable = false;
+   NixOS-Sec-Toolbox.enable = true;
 
     # NAS smb share  
     NASMount.enable = true;

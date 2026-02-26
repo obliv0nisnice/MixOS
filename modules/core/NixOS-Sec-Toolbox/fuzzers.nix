@@ -4,7 +4,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    aflplusplus
     feroxbuster
     ffuf
     gobuster

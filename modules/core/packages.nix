@@ -30,6 +30,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
+nixpkgs.config.allowUnsupportedSystem = true;
 
   environment.systemPackages = with pkgs;[
     coreutils-full
@@ -82,10 +83,36 @@
     docker-client
     git-lfs
     neovim
+    libdrm
+    python3
+    texliveTeTeX
+    eza
+    zip
+
 
     #RemoteConnection
     remmina
-    openvpn3
+    openvpn
+    wireshark
+    
+
+  # Pentesting stuff
+    #wireshark
+    #freerdp
+    #netexec
+    #evil-winrm
+    #pywhisker
+    #nmap
+    #samba
+    #smbmap
+    #sqlcmd
+    #python313Packages.impacket
+    #responder
+    #crowbar
+    #rdesktop
+    #fierce
+    #dig
+    smtp-user-enum
 
     
   ];
