@@ -2,6 +2,10 @@
   programs.hyprlock = {
     enable = true;
     settings = {
+      auth = {
+        fingerprint.enabled = true;
+      };
+
       general = {
         disable_loading_bar = true;
         grace = 10;

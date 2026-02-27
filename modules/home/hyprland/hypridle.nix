@@ -5,7 +5,8 @@
     hypridle = {
       enable = true;
       settings = {
-        general = {
+        general = { 
+          before_sleep_cmd = "hyprlock";
           after_sleep_cmd = "hyprctl dispatch dpms on";
           ignore_dbus_inhibit = false;
           lock_cmd = "hyprlock";

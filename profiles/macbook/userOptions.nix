@@ -6,5 +6,6 @@
 
     # NAS smb share  
     NASMount.enable = true;
+  fingerprint.enable = true;
 
 }

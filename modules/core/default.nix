@@ -13,6 +13,7 @@
     ./user.nix
     ./virtualisation.nix
     ./xdg.nix
+    ./fingerprint.nix
     ./NixOS-Sec-Toolbox
     inputs.stylix.nixosModules.stylix
     ./customConf
