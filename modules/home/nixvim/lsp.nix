@@ -16,7 +16,7 @@
         };
       nixd = {
         enable = true;
-        settings = {
+        config = {
           nixpkgs.expr = ''import <nixpkgs> { }'';
           formatting.command = [ "nixpkgs-fmt" ];
           options.nixos.expr = ''(builtins.getFlake ("/home/kopatz/projects/github/nix-config")).nixosConfigurations.kop-pc.options'';

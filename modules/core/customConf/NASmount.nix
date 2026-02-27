@@ -12,7 +12,7 @@ in
 
   config = mkIf cfg.enable {
 
-    fileSystems."/home/${username}/NAStalavista" = {
+    fileSystems."/home/${username}/Documents/NAStalavista" = {
       device = "//192.168.1.125/home/";
       fsType = "cifs";
 

@@ -4,7 +4,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    das
     havn
     ipscan
     masscan

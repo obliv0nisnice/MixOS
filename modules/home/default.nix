@@ -16,7 +16,7 @@
     ./rofi
     ./qt.nix
     ./scripts
-    ./starship.nix
+    #./starship.nix
     ./stylix.nix
     ./swaync.nix
     ./virtmanager.nix

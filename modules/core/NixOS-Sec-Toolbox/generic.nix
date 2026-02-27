@@ -18,7 +18,6 @@
     hurl
     inetutils
     inxi
-    #iproute replaced by iproute2
     iproute2
     iw
     lynx
@@ -26,7 +25,6 @@
     nano
     parted
     pwgen
-    ronin
     spyre
     util-linux
     wget

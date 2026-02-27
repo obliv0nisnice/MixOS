@@ -5,7 +5,7 @@
 {
   environment.systemPackages = with pkgs; [
     cfripper
-    checkov
+    #checkov
     cirrusgo
     kdigger
     kube-score

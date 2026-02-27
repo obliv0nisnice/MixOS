@@ -32,7 +32,6 @@
     graphqlmap
     graphw00f
     hakrawler
-    python3Packages.hakuin
     hey
     http-server
     httpx
@@ -43,7 +42,6 @@
     katana
     kiterunner
     mantra
-    mitmproxy2swagger
     monsoon
     nikto
     nomore403

@@ -6,7 +6,6 @@
   environment.systemPackages = with pkgs; [
     authoscope
     bruteforce-luks
-    #brutespray
     conpass
     crunch
     h8mail
@@ -15,15 +14,10 @@
     hashdeep
     john
     legba
-    #medusa
     nasty
-    #ncrack
     nth
-    #phrasendrescher
-    #python3Packages.patator
     thc-hydra
     truecrack
-    wordlists
     hashid
   ];
 }

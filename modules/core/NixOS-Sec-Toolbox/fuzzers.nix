@@ -12,7 +12,7 @@
     regexploit
     scout
     ssdeep
-    wfuzz
+    #wfuzz
     zzuf
   ];
 }

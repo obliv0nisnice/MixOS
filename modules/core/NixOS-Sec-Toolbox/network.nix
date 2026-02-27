@@ -31,7 +31,7 @@
     rustcat
     sshping
     sslh
-    tunnelgraf
+    #tunnelgraf
     wbox
     whois
     #yersinia

@@ -1,4 +1,4 @@
-{profile, ...}: {
+{profile, ...}:{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -25,6 +25,11 @@
       ls = "eza --icons --group-directories-first -1";
       ll = "eza --icons -a --group-directories-first -1 --no-user --long";
       tree = "eza --icons --tree --group-directories-first";
+    };
+    oh-my-zsh = {
+      enable = true;
+      plugins = [ "git" ];
+      theme = "eastwood";
     };
   };
 }

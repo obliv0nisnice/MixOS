@@ -7,7 +7,7 @@
     ./nh.nix
     ./packages.nix
     ./services.nix
-    ./starfish.nix
+    #./starfish.nix
     ./stylix.nix
     ./system.nix
     ./user.nix

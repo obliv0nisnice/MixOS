@@ -7,7 +7,7 @@
     bettercap
     burpsuite
     ettercap
-    mitmproxy
+    #mitmproxy
     mubeng
     proxify
     proxychains
