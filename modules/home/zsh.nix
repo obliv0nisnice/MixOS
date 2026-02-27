@@ -1,4 +1,4 @@
-{profile, ...}:{
+{profile, username, ...}:{
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
@@ -13,6 +13,7 @@
 
 
     shellAliases = {
+      os-rebuild = "sudo nixos-rebuild switch --flake /home/${username}/NixOS/#macbook --impure";
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
