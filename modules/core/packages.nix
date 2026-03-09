@@ -106,13 +106,16 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #samba
     #smbmap
     #sqlcmd
-    #python313Packages.impacket
+    python313Packages.impacket
     #responder
     #crowbar
     #rdesktop
     #fierce
     #dig
+    
+    medusa
     smtp-user-enum
+
 
     
   ];

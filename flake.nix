@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixMac.url = "github:nix-community/nixos-apple-silicon";
 
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
@@ -37,7 +38,7 @@
 
         modules = [
           ./hardware-configuration.nix
-          ./apple-silicon-support
+          inputs.nixMac.nixosModules.apple-silicon-support
           ./modules/core
           ./profiles/macbook
         ];
