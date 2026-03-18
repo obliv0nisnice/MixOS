@@ -89,6 +89,10 @@ nixpkgs.config.allowUnsupportedSystem = true;
     eza
     zip
 
+    terraform
+    
+    claude-code
+
 
     #RemoteConnection
     remmina

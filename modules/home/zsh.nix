@@ -14,6 +14,8 @@
 
     shellAliases = {
       os-rebuild = "sudo nixos-rebuild switch --flake /home/${username}/NixOS/#macbook --impure";
+      wg-on = "sudo wg-quick up /home/${username}/Downloads/VPN_MixOS.conf";
+      wg-off = "sudo wg-quick down /home/${username}/Downloads/VPN_MixOS.conf";
       sv = "sudo nvim";
       v = "nvim";
       c = "clear";
