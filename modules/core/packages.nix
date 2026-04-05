@@ -89,16 +89,25 @@ nixpkgs.config.allowUnsupportedSystem = true;
     eza
     zip
 
-    terraform
+    #x86-64 emulator for arm64
+    fex
     
+    #Cloud 
+    terraform
+    awscli2
+    
+    # AI coding tools
     claude-code
-
+    opencode
 
     #RemoteConnection
     remmina
     openvpn
     wireshark
+    openconnect
     
+    #RemoteScanning
+    openscap
 
   # Pentesting stuff
     #wireshark
@@ -111,6 +120,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #smbmap
     #sqlcmd
     python313Packages.impacket
+    file
     #responder
     #crowbar
     #rdesktop

@@ -17,5 +17,6 @@
     ./NixOS-Sec-Toolbox
     inputs.stylix.nixosModules.stylix
     ./customConf
+    ./k3s-single-node.nix
   ];
 }

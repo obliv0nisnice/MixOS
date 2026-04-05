@@ -2,7 +2,8 @@
 {
   networking = {
     hostName = "${host}";
-    extraHosts = "10.129.201.127 int-ftp.inlanefreight.htb ";
+    extraHosts = "10.203.15.13 wiki.ls.lab
+                  10.203.15.1 node-01.ls.lab";
     networkmanager.enable = true;
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
     firewall = {
