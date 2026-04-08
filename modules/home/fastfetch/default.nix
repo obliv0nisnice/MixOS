@@ -1,4 +1,4 @@
-{
+{ #Todo: Pokemon Fastfetch integrieren
   programs.fastfetch = {
     enable = true;
 

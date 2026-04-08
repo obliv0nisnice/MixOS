@@ -8,15 +8,6 @@
     virt-manager.enable = true;
     mtr.enable = true;
     
-    steam = {
-      enable = false;
-      remotePlay.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true; 
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
-    };
-
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
@@ -47,8 +38,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     killall
     libnotify
     libvirt
-    lm_sensors
-    lolcat
     lshw
     lxqt.lxqt-policykit
     meson
@@ -58,7 +47,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     nixfmt
     pavucontrol
     pciutils
-    picard
     pkg-config
     playerctl
     ripgrep
@@ -66,32 +54,24 @@ nixpkgs.config.allowUnsupportedSystem = true;
     unrar
     unzip
     usbutils
-    v4l-utils
     virt-viewer
     wget
     ytmdl
-    jetbrains.rider
     efibootmgr
     floorp-bin
     thunderbird
-    liquidctl
     vesktop
     teams-for-linux
     sysstat
-    vulkan-tools
     nodejs
     docker-client
     git-lfs
     neovim
     libdrm
     python3
-    texliveTeTeX
     eza
     zip
 
-    #x86-64 emulator for arm64
-    fex
-    
     #Cloud 
     terraform
     awscli2
@@ -105,28 +85,14 @@ nixpkgs.config.allowUnsupportedSystem = true;
     openvpn
     wireshark
     openconnect
+    mullvad-vpn
     
     #RemoteScanning
     openscap
 
   # Pentesting stuff
-    #wireshark
-    #freerdp
-    #netexec
-    #evil-winrm
-    #pywhisker
-    #nmap
-    #samba
-    #smbmap
-    #sqlcmd
     python313Packages.impacket
     file
-    #responder
-    #crowbar
-    #rdesktop
-    #fierce
-    #dig
-    
     medusa
     smtp-user-enum
 

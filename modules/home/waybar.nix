@@ -23,7 +23,6 @@ in
             "hyprland/window"
             "pulseaudio"
             "custom/cpu"
-            "custom/gpu"
             "memory"
             "idle_inhibitor"
           ];
@@ -79,13 +78,7 @@ in
             return-type = "json";
             tooltip = true;
           };
-          "custom/gpu" = {
-            format = "󰢮 {}";
-            tooltip = true;
-            interval = 5;
-            exec = "nvidia-smi --query-gpu=utilization.gpu,power.draw,temperature.gpu --format=csv,noheader | awk -F ', ' '{print $1 \" | \" $2 \"W | \" $3 \"°C\"}'";
-          };
-
+          
           "disk" = {
             format = " {free}";
             tooltip = true;

@@ -16,8 +16,6 @@
       inputs.home-manager.follows = "home-manager-unstable";
     };
 
-    nvf.url = "github:notashelf/nvf";
-    swww.url = "github:LGFae/swww";
     nixvim.url = "github:nix-community/nixvim";
   };
 

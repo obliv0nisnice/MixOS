@@ -14,8 +14,6 @@ in {
     };
   };
 
-  hardware.graphics.enable32Bit = false;
-
   time.timeZone = "Europe/Vienna";
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -29,10 +27,7 @@ in {
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
-  environment.variables = {
-    ZANEYOS_VERSION = "2.3";
-    ZANEYOS = "true";
-  };
+  
   console.keyMap = "${consoleKeyMap}";
   system.stateVersion = "23.11"; # Do not change!
 }

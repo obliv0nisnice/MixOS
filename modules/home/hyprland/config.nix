@@ -114,10 +114,8 @@ in {
         "$modifier,W,exec,${browser}"
         "$modifier,E,exec,emopicker9000"
         "$modifier,S,exec,screenshootin"
-        "$modifier,D,exec,discord"
-        "$modifier,O,exec,obs"
+        "$modifier,D,exec,vesktop"
         "$modifier,C,exec,hyprpicker -a"
-        "$modifier,G,exec,gimp"
         "$modifier,T,exec,pypr toggle term"
         "$modifier SHIFT,T,exec,pypr toggle thunar"
         "$modifier,M,exec,pavucontrol"
@@ -200,7 +198,6 @@ windowrule = [
 
   "tag browser 1, match:class ^(Brave-browser(-beta|-dev|-unstable)?)$"
   "tag browser 1, match:class ^([Ff]irefox|org.mozilla.firefox|[Ff]irefox-esr)$"
-  "tag browser 1, match:class ^([Gg]oogle-chrome(-beta|-dev|-unstable)?)$"
   "tag browser 1, match:class ^([Tt]horium-browser|[Cc]achy-browser)$"
 
   "tag projects 1, match:class ^(codium|codium-url-handler|VSCodium)$"
@@ -211,13 +208,6 @@ windowrule = [
   "tag im 1, match:class ^([Ww]hatsapp-for-linux)$"
   "tag im 1, match:class ^(org.telegram.desktop|io.github.tdesktop_x64.TDesktop)$"
   "tag im 1, match:class ^(teams-for-linux)$"
-
-  "tag games 1, match:class ^(gamescope)$"
-  "tag games 1, match:class ^(steam_app_\\d+)$"
-
-  "tag gamestore 1, match:class ^([Ss]team)$"
-  "tag gamestore 1, match:title ^([Ll]utris)$"
-  "tag gamestore 1, match:class ^(com.heroicgameslauncher.hgl)$"
 
   "tag settings 1, match:class ^(gnome-disks|wihotspot(-gui)?)$"
   "tag settings 1, match:class ^([Rr]ofi)$"
@@ -280,7 +270,7 @@ windowrule = [
         "QT_QPA_PLATFORM=wayland;xcb"
         "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
         "QT_AUTO_SCREEN_SCALE_FACTOR, 1"
-        "SDL_VIDEODRIVER, x11"
+        #       "SDL_VIDEODRIVER, x11"
         "MOZ_ENABLE_WAYLAND, 1"
       ];
     };

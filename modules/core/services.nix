@@ -12,16 +12,8 @@ in {
     fstrim.enable = true;
     gvfs.enable = true;
     openssh.enable = true;
-    flatpak.enable = true;
     blueman.enable = true;
 
-    xserver = {
-      enable = false;
-      xkb = {
-        layout = "${keyboardLayout}";
-        variant = "";
-      };
-    };
     greetd = {
       enable = true;
       settings = {
@@ -31,16 +23,6 @@ in {
         };
       };
     };
-    smartd = {
-      enable = false;
-      autodetect = true;
-    };
-    printing = {
-      enable = true;
-      drivers = [
-        # pkgs.hplipWithPlugin
-      ];
-    };
     gnome.gnome-keyring.enable = true;
     avahi = {
       enable = true;
@@ -48,29 +30,12 @@ in {
       openFirewall = true;
     };
     ipp-usb.enable = true;
-    syncthing = {
-      enable = false;
-      user = "${username}";
-      dataDir = "/home/${username}";
-      configDir = "/home/${username}/.config/syncthing";
-    };
     pipewire = {
       enable = true;
       alsa.enable = true;
-      alsa.support32Bit = true;
       pulse.enable = true;
     };
-    rpcbind.enable = true;
-    nfs.server.enable = true;
   };
-
-    #  systemd.services.flatpak-repo = {
-    #    wantedBy = ["multi-user.target"];
-    #    path = [pkgs.flatpak];
-  #    script = ''
-    #      flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-    #    '';
-  #  };
 
   # Security / Polkit
   security.rtkit.enable = true;

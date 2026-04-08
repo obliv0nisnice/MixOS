@@ -1,9 +1,9 @@
 {...}: {
   imports = [
-    ./bash.nix
+    #./bash.nix
     ./bat.nix
     ./btop.nix
-    ./emoji.nix
+    ./emoji.nix #TODO: ersetzen mit rofimoji
     ./fastfetch
     ./gh.nix
     #./ghostty.nix
@@ -11,12 +11,10 @@
     ./gtk.nix
     ./hyprland
     ./kitty.nix
-    #./nvf.nix -> switch to nixvim
     ./nixvim
     ./rofi
     ./qt.nix
     ./scripts
-    #./starship.nix
     ./stylix.nix
     ./swaync.nix
     ./virtmanager.nix
