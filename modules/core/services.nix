@@ -8,6 +8,7 @@
 in {
   # Services to start
   services = {
+    power-profiles-daemon.enable = true;
     libinput.enable = true;
     fstrim.enable = true;
     gvfs.enable = true;

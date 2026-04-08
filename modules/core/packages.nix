@@ -71,6 +71,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     python3
     eza
     zip
+    rofimoji
 
     #Cloud 
     terraform
@@ -95,6 +96,9 @@ nixpkgs.config.allowUnsupportedSystem = true;
     file
     medusa
     smtp-user-enum
+
+    # power Analyse
+    powertop
 
 
     

@@ -31,6 +31,7 @@ in
             "custom/notification"
             "custom/exit"
             "battery"
+            "power-profiles-daemon"
             "tray"
             "clock"
           ];
@@ -187,6 +188,17 @@ in
             on-click = "";
             tooltip = false;
           };
+          "power-profiles-daemon" = {
+            format = "{icon}";
+            tooltip = true;
+            tooltip-format = "{profile}";
+            format-icons = {
+              default = "󰗑";
+              performance = "󰓅";
+              balanced = "󰾅";
+              power-saver = "󰾆";
+              };
+            };
         }
       ];
       style = concatStrings [
@@ -254,7 +266,7 @@ in
             color: #${config.lib.stylix.colors.base00};
             border-radius: 24px 10px 24px 10px;
           }
-          #custom-gpu, #custom-cpu {
+          #custom-cpu {
             font-weight: bold;
             margin: 4px 0px;
             margin-left: 7px;
@@ -272,7 +284,7 @@ in
             padding: 0px 30px 0px 15px;
             border-radius: 0px 0px 40px 0px;
           }
-          #custom-hyprbindings, #network, #battery,
+          #custom-hyprbindings, #network, #battery, #power-profiles-daemon,
           #custom-notification, #tray, #custom-exit {
             font-weight: bold;
             background: #${config.lib.stylix.colors.base0F};
