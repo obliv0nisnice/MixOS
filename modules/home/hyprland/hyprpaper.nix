@@ -1,4 +1,5 @@
  {username, pkgs, ...}: {
+   #TODO: Optimieren
     home.file.".config/hypr/hyprpaper.conf".source = pkgs.writeText "hyprpaper.conf" ''
  
     # Fallback for all monitors

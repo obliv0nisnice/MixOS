@@ -35,6 +35,7 @@
         "keybind" = "l";
       }
     ];
+
     style = ''
       * {
         font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
@@ -66,11 +67,6 @@
       	margin: 10px;
       	border-radius: 20px;
       	background-image: image(url("icons/logout.png"));
-      }
-      #suspend {
-      	margin: 10px;
-      	border-radius: 20px;
-      	background-image: image(url("icons/suspend.png"));
       }
       #shutdown {
       	margin: 10px;
