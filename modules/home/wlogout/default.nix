@@ -34,8 +34,13 @@
         "text" = "Lock";
         "keybind" = "l";
       }
+      {
+        "label" = "hibernate";
+        "action" = "sleep 1; systemctl hibernate";
+        "text" = "Hibernate";
+        "keybind" = "h";
+      }
     ];
-
     style = ''
       * {
         font-family: "JetBrainsMono NF", FontAwesome, sans-serif;
@@ -68,6 +73,11 @@
       	border-radius: 20px;
       	background-image: image(url("icons/logout.png"));
       }
+      #suspend {
+      	margin: 10px;
+      	border-radius: 20px;
+      	background-image: image(url("icons/suspend.png"));
+      }
       #shutdown {
       	margin: 10px;
       	border-radius: 20px;
@@ -83,7 +93,12 @@
       	border-radius: 20px;
       	background-image: image(url("icons/lock.png"));
       }
-   '';
+      #hibernate {
+      	margin: 10px;
+      	border-radius: 20px;
+      	background-image: image(url("icons/hibernate.png"));
+      }
+    '';
   };
   home.file.".config/wlogout/icons" = {
     source = ./icons;
