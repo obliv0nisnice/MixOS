@@ -42,4 +42,4 @@ while read -r line; do
 done < /proc/stat
 
 # --- Ausgabe ---
-echo "{\"text\": \" ${total_usage}%\", \"tooltip\": \"${TOOLTIP}\"}"
+echo "{\"text\": \"  ${total_usage}%\", \"tooltip\": \"${TOOLTIP}\"}"

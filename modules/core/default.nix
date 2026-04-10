@@ -16,5 +16,6 @@
     inputs.stylix.nixosModules.stylix
     ./customConf
     ./k3s-single-node.nix
+    ./mullvad.nix
   ];
 }

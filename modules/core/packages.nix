@@ -41,7 +41,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     lshw
     lxqt.lxqt-policykit
     meson
-    mpv
+    mpv 
     ncdu
     ninja
     nixfmt
@@ -73,13 +73,15 @@ nixpkgs.config.allowUnsupportedSystem = true;
     zip
     rofimoji
 
+    # unnecessary windows shit
+    libreoffice
+
     #Cloud 
     terraform
     awscli2
     
     # AI coding tools
     claude-code
-    opencode
 
     #RemoteConnection
     remmina
@@ -99,6 +101,9 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     # power Analyse
     powertop
+
+    #learnstuff
+    anki
 
 
     

@@ -7,7 +7,6 @@
     cloudbrute
     enumerepo
     holehe
-    maigret
     metabigor
     sn0int
     socialscan
