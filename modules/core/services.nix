@@ -7,7 +7,6 @@
   inherit (import ../../hosts/${host}/variables.nix) keyboardLayout;
 in {
 
-    zramSwap.enable = true;
   # Services to start
   services = {
     power-profiles-daemon.enable = true;

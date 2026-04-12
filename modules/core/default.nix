@@ -17,5 +17,6 @@
     ./customConf
     ./k3s-single-node.nix
     ./mullvad.nix
+    ./ram.nix
   ];
 }

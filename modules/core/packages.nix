@@ -105,7 +105,7 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #learnstuff
     anki
 
-
+    
     
   ];
 }
