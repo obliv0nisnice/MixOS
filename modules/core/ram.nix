@@ -3,8 +3,8 @@
 {
   zramSwap = {
     enable = true;
-    algorithm = "zstd";    
-    memoryPercent = 50;    
+    algorithm = "zstd";    # beste Kompression/Speed Balance
+    memoryPercent = 50;    # 8 GB zram aus 16 GB RAM → effektiv ~24 GB nutzbar
   };
 
   swapDevices = [{
