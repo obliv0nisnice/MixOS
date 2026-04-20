@@ -105,7 +105,10 @@ nixpkgs.config.allowUnsupportedSystem = true;
     #learnstuff
     anki
 
+    # audible downloader?
+    libation
 
+    
     
   ];
 }
