@@ -9,7 +9,7 @@
 
   swapDevices = [{
     device = "/var/lib/swapfile";
-    size = 4096;           # 4 GB
+    size = 16384;           # 4 GB
   }];
 
   boot.kernel.sysctl = {
