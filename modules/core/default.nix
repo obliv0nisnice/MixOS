@@ -1,5 +1,9 @@
-{inputs, ...}: {
+{
+  inputs,
+  ...
+}: {
   imports = [
+    ./profiles.nix
     ./fonts.nix
     ./hardware.nix
     ./network.nix
@@ -18,5 +22,6 @@
     ./k3s-single-node.nix
     ./mullvad.nix
     ./ram.nix
+    ./emulateboot.nix
   ];
 }

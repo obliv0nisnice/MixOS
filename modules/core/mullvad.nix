@@ -1,5 +1,11 @@
-{ ... }:
+{
+  config,
+  lib,
+  ...
+}:
 
 {
-  services.mullvad-vpn.enable = true;
+  config = lib.mkIf config.machineProfiles.vpn.enable {
+    services.mullvad-vpn.enable = true;
+  };
 }

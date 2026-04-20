@@ -1,11 +1,16 @@
-{pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
   {
 
   programs = {
     dconf.enable = true;
     seahorse.enable = true;
     fuse.userAllowOther = true;
-    virt-manager.enable = true;
+    virt-manager.enable = lib.mkDefault config.machineProfiles.virtualization.enable;
     mtr.enable = true;
     
     gnupg.agent = {
@@ -21,13 +26,12 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-nixpkgs.config.allowUnsupportedSystem = true;
+  nixpkgs.config.allowUnsupportedSystem = config.machineProfiles.allowUnsupported.enable;
 
   environment.systemPackages = with pkgs;[
     coreutils-full
     brightnessctl # For Screen Brightness Control
     cmatrix # Matrix Movie Effect In Terminal
-    docker-compose # Allows Controlling Docker From A Single File
     file-roller # Archive Manager
     tuigreet # The Login Manager (Sometimes Referred To As Display Manager)
     thunar-archive-plugin
@@ -37,7 +41,6 @@ nixpkgs.config.allowUnsupportedSystem = true;
     inxi
     killall
     libnotify
-    libvirt
     lshw
     lxqt.lxqt-policykit
     meson
@@ -54,17 +57,12 @@ nixpkgs.config.allowUnsupportedSystem = true;
     unrar
     unzip
     usbutils
-    virt-viewer
     wget
     ytmdl
     efibootmgr
     floorp-bin
-    thunderbird
-    vesktop
-    teams-for-linux
     sysstat
     nodejs
-    docker-client
     git-lfs
     neovim
     libdrm
@@ -72,28 +70,27 @@ nixpkgs.config.allowUnsupportedSystem = true;
     eza
     zip
     rofimoji
+    
+    dotnet-sdk_8
 
-    # unnecessary windows shit
-    libreoffice
-
-    #Cloud 
+    # Cloud
     terraform
     awscli2
-    
+
     # AI coding tools
     claude-code
+    codex
 
-    #RemoteConnection
+    # RemoteConnection
     remmina
     openvpn
     wireshark
     openconnect
-    mullvad-vpn
-    
-    #RemoteScanning
+
+    # RemoteScanning
     openscap
 
-  # Pentesting stuff
+    # Pentesting stuff
     python313Packages.impacket
     file
     medusa
@@ -101,11 +98,19 @@ nixpkgs.config.allowUnsupportedSystem = true;
 
     # power Analyse
     powertop
-
-    #learnstuff
+  ] ++ lib.optionals config.machineProfiles.virtualization.enable [
+    docker-compose # Allows Controlling Docker From A Single File
+    docker-client
+    libvirt
+    virt-viewer
+  ] ++ lib.optionals config.machineProfiles.comms.enable [
+    thunderbird
+    vesktop
+    teams-for-linux
+  ] ++ lib.optionals config.machineProfiles.office.enable [
+    libreoffice
     anki
-
-    
-    
+  ] ++ lib.optionals config.machineProfiles.vpn.enable [
+    mullvad-vpn
   ];
 }

@@ -1,11 +1,10 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [pyprland];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ pyprland ];
 
-  home.file.".config/hypr/pyprland.toml".text = ''
+  home.file.".config/pypr/config.toml".text = ''
     [pyprland]
-    plugins = [
-      "scratchpads",
-    ]
+    plugins = ["scratchpads"]
 
     [scratchpads.term]
     animation = "fromTop"
@@ -13,18 +12,22 @@
     class = "kitty-dropterm"
     size = "75% 60%"
     max_size = "1920px 100%"
+    margin = 50
+    # pinned = true   # inzwischen Standard, nur falls du es explizit machen willst
 
     [scratchpads.volume]
-    animation = "fromTop"
+    animation = "fromRight"
     command = "pavucontrol"
-    class = "pavucontrol"
+    class = "org.pulseaudio.pavucontrol"
     lazy = true
     size = "40% 90%"
+    unfocus = "hide"
 
     [scratchpads.thunar]
     animation = "fromBottom"
     command = "thunar"
     class = "thunar"
     size = "75% 60%"
+    lazy = true
   '';
 }

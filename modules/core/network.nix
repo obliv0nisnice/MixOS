@@ -1,4 +1,11 @@
-{ pkgs, host, options, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  host,
+  options,
+  ...
+}:
 {
   networking = {
     hostName = "${host}";
@@ -8,8 +15,9 @@
     timeServers = options.networking.timeServers.default ++ [ "pool.ntp.org" ];
     firewall = {
       enable = true;
-      allowedTCPPorts = [
+      allowedTCPPorts = lib.optionals config.machineProfiles.remoteAccess.enable [
         22
+      ] ++ [
         80
         443
         59010
@@ -18,10 +26,13 @@
       allowedUDPPorts = [
         59010
         59011
+      ] ++ lib.optionals config.machineProfiles.vpn.enable [
         51820
       ];
     };
   };
 
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
+  environment.systemPackages =
+    with pkgs;
+    lib.optionals config.machineProfiles.desktopIntegration.enable [ networkmanagerapplet ];
 }

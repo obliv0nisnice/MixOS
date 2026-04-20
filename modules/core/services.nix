@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   username,
   host,
@@ -12,8 +14,8 @@ in {
     power-profiles-daemon.enable = true;
     libinput.enable = true;
     fstrim.enable = true;
-    gvfs.enable = true;
-    openssh.enable = true;
+    gvfs.enable = config.machineProfiles.desktopIntegration.enable;
+    openssh.enable = config.machineProfiles.remoteAccess.enable;
     blueman.enable = true;
 
     greetd = {
@@ -27,11 +29,11 @@ in {
     };
     gnome.gnome-keyring.enable = true;
     avahi = {
-      enable = true;
+      enable = config.machineProfiles.networkDiscovery.enable;
       nssmdns4 = true;
       openFirewall = true;
     };
-    ipp-usb.enable = true;
+    ipp-usb.enable = config.machineProfiles.usbImaging.enable;
     pipewire = {
       enable = true;
       alsa.enable = true;

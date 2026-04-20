@@ -13,6 +13,13 @@
 
 
     shellAliases = {
+      remote-server-build = "nixos-server-rebuild switch \
+  --flake /home/oblivion/Documents/Projects/NixOS-Config#homedepot \
+  --target-host jakob@192.168.1.119 \
+  --build-host localhost \
+  --use-remote-sudo \
+  --option extra-platforms x86_64-linux \
+  --option extra-sandbox-paths /run/binfmt";
       os-rebuild = "sudo nixos-rebuild switch --flake /home/${username}/NixOS/#macbook --impure";
       wg-on = "sudo wg-quick up /home/${username}/Downloads/VPN_MixOS.conf";
       wg-off = "sudo wg-quick down /home/${username}/Downloads/VPN_MixOS.conf";

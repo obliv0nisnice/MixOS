@@ -1,4 +1,10 @@
-{ host, username, config, ...}: 
+{
+  host,
+  username,
+  config,
+  machineProfiles,
+  ...
+}: 
 let
   inherit
     (import ../../../hosts/${host}/variables.nix)
@@ -8,6 +14,7 @@ let
     workspaceSettings
     keyboardLayout
     ;
+  batteryMode = machineProfiles.batteryPerformance.enable;
 in {
   wayland.windowManager.hyprland = {
     settings = {
@@ -73,13 +80,13 @@ in {
         rounding = 10;
         blur = {
           enabled = true;
-          size = 5;
-          passes = 3;
+          size = if batteryMode then 3 else 5;
+          passes = if batteryMode then 1 else 3;
           ignore_opacity = false;
           new_optimizations = true;
         };
         shadow = {
-          enabled = true;
+          enabled = !batteryMode;
           range = 4;
           render_power = 3;
           color = "rgba(1a1a1aee)";
@@ -95,13 +102,13 @@ in {
           "liner, 1, 1, 1, 1"
         ];
         animation = [
-          "windows, 1, 6, wind, slide"
-          "windowsIn, 1, 6, winIn, slide"
-          "windowsOut, 1, 5, winOut, slide"
-          "windowsMove, 1, 5, wind, slide"
+          "windows, 1, ${if batteryMode then "3" else "6"}, wind, slide"
+          "windowsIn, 1, ${if batteryMode then "3" else "6"}, winIn, slide"
+          "windowsOut, 1, ${if batteryMode then "3" else "5"}, winOut, slide"
+          "windowsMove, 1, ${if batteryMode then "3" else "5"}, wind, slide"
           "border, 1, 1, liner"
-          "fade, 1, 10, default"
-          "workspaces, 1, 5, wind"
+          "fade, 1, ${if batteryMode then "4" else "10"}, default"
+          "workspaces, 1, ${if batteryMode then "3" else "5"}, wind"
         ];
       };
 

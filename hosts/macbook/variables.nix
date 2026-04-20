@@ -28,8 +28,7 @@
   terminal = "kitty"; # Set Default System Terminal
   keyboardLayout = "de";
   consoleKeyMap = "de";
-
-  # For Nvidia Prime support
-  intelID = "PCI:1:0:0";
-  nvidiaID = "PCI:0:2:0";
+  # TODO(trim): dead config on Apple Silicon, kept commented in case this host file is reused elsewhere.
+  # intelID = "PCI:1:0:0";
+  # nvidiaID = "PCI:0:2:0";
 }

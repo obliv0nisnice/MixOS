@@ -1,23 +1,30 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  virtualisation.libvirtd.enable = true;
+  config = lib.mkIf config.machineProfiles.virtualization.enable {
+    virtualisation.libvirtd.enable = true;
 
-  programs.virt-manager.enable = true;
+    programs.virt-manager.enable = true;
 
-  virtualisation.spiceUSBRedirection.enable = true;
-  virtualisation.docker.enable = true;
+    virtualisation.spiceUSBRedirection.enable = true;
+    virtualisation.docker.enable = true;
 
-  users.users.oblivion.extraGroups = [
-    "libvirtd"
-    "kvm"
-    "docker"
-  ];
+    users.users.oblivion.extraGroups = [
+      "libvirtd"
+      "kvm"
+      "docker"
+    ];
 
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    qemu
-    packer
-    ansible
-  ];
+    environment.systemPackages = with pkgs; [
+      virt-manager
+      qemu
+      packer
+      ansible
+    ];
+  };
 }

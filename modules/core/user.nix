@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   inputs,
   username,
@@ -15,7 +17,10 @@ in {
     useUserPackages = true;
     useGlobalPkgs = true;
     backupFileExtension = "backup";
-    extraSpecialArgs = {inherit inputs username host profile;};
+    extraSpecialArgs = {
+      inherit inputs username host profile;
+      machineProfiles = config.machineProfiles;
+    };
     users.${username} = {
       imports = [./../home];
       home = {
@@ -32,12 +37,14 @@ in {
     description = "${gitUsername}";
     extraGroups = [
       "adbusers"
-      "docker"
-      "libvirtd"
       "lp"
       "networkmanager"
       "scanner"
       "wheel"
+    ] ++ lib.optionals config.machineProfiles.virtualization.enable [
+      "docker"
+      "libvirtd"
+      "kvm"
     ];
     shell = pkgs.zsh;
     ignoreShellProgramCheck = true;
