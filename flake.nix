@@ -17,6 +17,7 @@
     };
 
     nixvim.url = "github:nix-community/nixvim";
+    pwndbg.url = "github:pwndbg/pwndbg";
   };
 
   outputs = inputs @ { nixpkgs, ... }:
@@ -44,4 +45,3 @@
     };
   };
 }
-

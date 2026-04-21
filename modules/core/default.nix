@@ -21,6 +21,7 @@
     ./customConf
     ./k3s-single-node.nix
     ./mullvad.nix
+    ./netbird.nix
     ./ram.nix
     ./emulateboot.nix
   ];

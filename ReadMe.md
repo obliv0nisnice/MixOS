@@ -160,6 +160,79 @@ Zum reinen Evaluieren ohne Build:
 nix eval --impure .#nixosConfigurations.macbook.config.system.build.toplevel.drvPath
 ```
 
+## HomeSuite Ops
+
+HomeSuite laeuft nicht aus diesem Apple-Silicon-Host direkt, sondern ueber den separaten Server-Host `homedepot` im anderen Repo unter:
+
+- `/home/oblivion/Documents/Projects/NixOS-Config`
+
+Der aktuelle Ablauf dort ist bewusst als Hybrid-Modell gebaut:
+
+- `nixos-rebuild` bzw. `nh os switch` setzt nur Runtime, PostgreSQL, systemd-Units und nginx auf
+- Backend und Frontend werden nicht automatisch bei jedem Switch gebaut
+- Deploy und Migration werden explizit manuell gestartet
+
+### Deploy
+
+Ein neues HomeSuite-Release wird auf dem Server so gebaut und aktiviert:
+
+```bash
+sudo systemctl start homesuite-deploy
+```
+
+Der Deploy-Unit macht dabei:
+
+- `dotnet publish` fuer das Backend
+- `npm ci` und `npm run build` fuer das Frontend
+- neue Release-Ordner unter `/var/lib/homesuite/backend/releases` und `/var/lib/homesuite/frontend/releases`
+- Update der `current`-Symlinks
+- Neustart von `homesuite-backend`
+- Reload von `nginx`
+
+Nuetzliche Checks:
+
+```bash
+journalctl -u homesuite-deploy -n 100 --no-pager
+systemctl status homesuite-backend nginx --no-pager
+```
+
+### Migration
+
+Entity-Framework-Migrationen laufen getrennt:
+
+```bash
+sudo systemctl start homesuite-migrate
+```
+
+Nuetzliche Checks:
+
+```bash
+journalctl -u homesuite-migrate -n 100 --no-pager
+systemctl status postgresql --no-pager
+```
+
+### Runtime
+
+Die laufende App nutzt auf dem Server aktuell:
+
+- Source-Checkout: `/home/jakob/homesuite`
+- Runtime-Root: `/var/lib/homesuite`
+- Backend via `homesuite-backend.service`
+- lokale PostgreSQL-DB via `postgresql.service`
+- Frontend ueber nginx mit Proxy auf das Backend
+
+Wenn sich nur die Server-Konfiguration aendert, reicht dort:
+
+```bash
+nh os switch
+```
+
+Wenn sich auch die HomeSuite-App selbst geaendert hat, folgt danach zusaetzlich:
+
+```bash
+sudo systemctl start homesuite-deploy
+```
+
 ## Aktueller Zustand
 
 Die Konfiguration evaluiert aktuell erfolgreich.

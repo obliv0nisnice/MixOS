@@ -95,9 +95,16 @@
     file
     medusa
     smtp-user-enum
+    gdb
+    gcc
+    gnumake
+    pwntools
+    boofuzz
+
 
     # power Analyse
     powertop
+
   ] ++ lib.optionals config.machineProfiles.virtualization.enable [
     docker-compose # Allows Controlling Docker From A Single File
     docker-client
@@ -112,5 +119,6 @@
     anki
   ] ++ lib.optionals config.machineProfiles.vpn.enable [
     mullvad-vpn
+    netbird
   ];
 }

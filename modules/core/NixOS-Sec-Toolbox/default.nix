@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   enable = config.NixOS-Sec-Toolbox.enable or false;
@@ -7,7 +7,7 @@ in
   options.NixOS-Sec-Toolbox.enable = lib.mkEnableOption "NixOS Security Toolbox";
 
   config = lib.mkIf enable
-    (lib.mkMerge (map (f: import (./. + "/${f}") { inherit config lib pkgs; }) [
+    (lib.mkMerge (map (f: import (./. + "/${f}") { inherit config lib pkgs inputs; }) [
       "bluetooth.nix"
       "cloud.nix"
       "code.nix"
@@ -43,4 +43,3 @@ in
       "wireless.nix"
     ]));
 }
-
