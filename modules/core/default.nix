@@ -24,5 +24,6 @@
     ./netbird.nix
     ./ram.nix
     ./emulateboot.nix
+    ./build.nix
   ];
 }

@@ -4,7 +4,7 @@
     luasnip.enable = true;
     copilot-lua = {
       enable = true;
-      settings = {
+      config = {
         suggestion.enabled = false;
         panel.enabled = false;
       };
@@ -23,7 +23,7 @@
     cmp = {
       enable = true;
 
-      settings = {
+      config = {
         snippet.expand = ''
           function(args)
             require('luasnip').lsp_expand(args.body)
@@ -51,7 +51,7 @@
             border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
           };
 
-          settings.documentation = {
+          documentation = {
             border = [ "╭" "─" "╮" "│" "╯" "─" "╰" "│" ];
           };
         };

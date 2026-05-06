@@ -6,7 +6,7 @@
       # todo change based on graphical settings
       clipboardPackage = pkgs.wl-clipboard;
       enable = true;
-      settings = {
+      config = {
         typst = {
           affix = ''#image("%s")'';
         };

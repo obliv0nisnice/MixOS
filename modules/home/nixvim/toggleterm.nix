@@ -1,7 +1,7 @@
 {
   plugins.toggleterm = {
     enable = true;
-    settings = {
+    config = {
       open_mapping = "[[<C-t>]]";
     };
   };

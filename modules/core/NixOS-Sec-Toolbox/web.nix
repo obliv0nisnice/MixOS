@@ -45,7 +45,7 @@
     nikto
     nomore403
     ntlmrecon
-    offat
+    #offat
     photon
     plecost
     scraper

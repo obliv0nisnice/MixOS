@@ -3,13 +3,22 @@
   pkgs,
   ...
 }: {
+  nix.settings = {
+    # Large local builds such as linux-asahi can exhaust temporary sandbox
+    # space on this machine when they fan out too aggressively.
+    #   max-jobs = 2;
+    #cores = 4;
+  };
+
   environment.systemPackages = with pkgs; [
 
   ];
 
+  hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
+
   machineProfiles = {
     allowUnsupported.enable = true;
-    security.enable = true;
+    security.enable = false;
     virtualization.enable = true;
     vpn.enable = true;
     x86Emulation.enable = true;

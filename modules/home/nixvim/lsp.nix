@@ -12,7 +12,7 @@
       qmlls =
         {
           enable = true;
-          settings.cmd = [ "qmlls" "-E" ];
+          config.cmd = [ "qmlls" "-E" ];
         };
       nixd = {
         enable = true;
@@ -95,7 +95,7 @@
     otter = {
       # provide lsp functionality for code embedded in other languages
       enable = true;
-      settings.handle_leading_whitespace = true;
+      config.handle_leading_whitespace = true;
     };
 
     lsp-lines = {

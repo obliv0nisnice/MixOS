@@ -20,7 +20,7 @@
     ncftp
     netcat-gnu
     netdiscover
-    netexec
+    #netexec
     nload
     nuttcp
     #pingu marked as broken in nixpkgs

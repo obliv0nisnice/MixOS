@@ -7,7 +7,7 @@
     feroxbuster
     ffuf
     gobuster
-    honggfuzz
+    #honggfuzz
     radamsa
     regexploit
     scout

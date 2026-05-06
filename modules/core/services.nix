@@ -17,7 +17,7 @@ in {
     gvfs.enable = config.machineProfiles.desktopIntegration.enable;
     openssh.enable = config.machineProfiles.remoteAccess.enable;
     blueman.enable = true;
-    resolved.enable = true;
+    #resolved.enable = true;
 
     greetd = {
       enable = true;

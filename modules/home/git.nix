@@ -5,9 +5,10 @@ in
 {
   programs.git = {
     enable = true;
-    settings = { 
-    user.name = "${gitUsername}";
-    user.email = "${gitEmail}";
-      };
+    signing.format = "openpgp";
+    settings = {
+      user.name = "${gitUsername}";
+      user.email = "${gitEmail}";
+    };
   };
 }

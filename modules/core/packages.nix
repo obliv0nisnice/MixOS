@@ -4,7 +4,16 @@
   pkgs,
   ...
 }:
-  {
+let
+  unblobPatched = pkgs.unblob.overrideAttrs (old: {
+    # These handlers currently report sandbox-specific failures in nixpkgs'
+    # check environment, while the rest of the suite still passes.
+    disabledTests = (old.disabledTests or []) ++ [
+      "test_all_handlers[filesystem.romfs]"
+      "test_all_handlers[filesystem.yaffs]"
+    ];
+  });
+in {
 
   programs = {
     dconf.enable = true;
@@ -70,6 +79,21 @@
     eza
     zip
     rofimoji
+
+    # 3D
+    (pkgs.blender.overrideAttrs (old: {
+    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.sse2neon ];
+    buildInputs = (old.buildInputs or []) ++ [ pkgs.sse2neon ];
+    cmakeFlags = (old.cmakeFlags or []) ++ [
+      "-DSSE2NEON_INCLUDE_DIR=${pkgs.sse2neon}/include"
+    ];
+    }))
+
+    typst
+
+    #file manager
+    ranger
+    yazi
     
     dotnet-sdk_8
 
@@ -80,6 +104,7 @@
     # AI coding tools
     claude-code
     codex
+    
 
     # RemoteConnection
     remmina
@@ -100,6 +125,7 @@
     gnumake
     pwntools
     boofuzz
+    unblobPatched
 
 
     # power Analyse
