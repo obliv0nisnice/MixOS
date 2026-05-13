@@ -1,0 +1,170 @@
+.
+├── hosts
+│   └── macbook
+│       └── variables.nix
+├── modules
+│   ├── core
+│   │   ├── customConf
+│   │   │   ├── default.nix
+│   │   │   └── NASmount.nix
+│   │   ├── NixOS-Sec-Toolbox
+│   │   │   ├── bluetooth.nix
+│   │   │   ├── cloud.nix
+│   │   │   ├── code.nix
+│   │   │   ├── container.nix
+│   │   │   ├── default.nix
+│   │   │   ├── dns.nix
+│   │   │   ├── exploits.nix
+│   │   │   ├── forensics.nix
+│   │   │   ├── fuzzers.nix
+│   │   │   ├── generic.nix
+│   │   │   ├── hardware.nix
+│   │   │   ├── host.nix
+│   │   │   ├── information-gathering.nix
+│   │   │   ├── kubernetes.nix
+│   │   │   ├── ldap.nix
+│   │   │   ├── LICENSE
+│   │   │   ├── load-testing.nix
+│   │   │   ├── malware.nix
+│   │   │   ├── misc.nix
+│   │   │   ├── mobile.nix
+│   │   │   ├── network.nix
+│   │   │   ├── packet-generators.nix
+│   │   │   ├── password.nix
+│   │   │   ├── port-scanners.nix
+│   │   │   ├── proxies.nix
+│   │   │   ├── README.md
+│   │   │   ├── services.nix
+│   │   │   ├── smartcards.nix
+│   │   │   ├── terminals.nix
+│   │   │   ├── tls.nix
+│   │   │   ├── traffic.nix
+│   │   │   ├── tunneling.nix
+│   │   │   ├── voip.nix
+│   │   │   ├── web.nix
+│   │   │   ├── windows.nix
+│   │   │   └── wireless.nix
+│   │   ├── build.nix
+│   │   ├── default.nix
+│   │   ├── emulateboot.nix
+│   │   ├── fingerprint.nix
+│   │   ├── fonts.nix
+│   │   ├── hardware.nix
+│   │   ├── k3s-single-node.nix
+│   │   ├── mullvad.nix
+│   │   ├── netbird.nix
+│   │   ├── network.nix
+│   │   ├── nh.nix
+│   │   ├── packages.nix
+│   │   ├── profiles.nix
+│   │   ├── ram.nix
+│   │   ├── services.nix
+│   │   ├── stylix.nix
+│   │   ├── system.nix
+│   │   ├── user.nix
+│   │   ├── virtualbox.nix
+│   │   ├── virtualisation.nix
+│   │   └── xdg.nix
+│   ├── home
+│   │   ├── fastfetch
+│   │   │   ├── default.nix
+│   │   │   └── nixos.png
+│   │   ├── hyprland
+│   │   │   ├── config.nix
+│   │   │   ├── dark_angel_as_hacker.png
+│   │   │   ├── default.nix
+│   │   │   ├── Description.md
+│   │   │   ├── face.jpg
+│   │   │   ├── hypridle.nix
+│   │   │   ├── hyprland.nix
+│   │   │   ├── hyprlock.nix
+│   │   │   ├── hyprpaper.nix
+│   │   │   └── pyprland.nix
+│   │   ├── nixvim
+│   │   │   ├── auto-pairs.nix
+│   │   │   ├── autosave.nix
+│   │   │   ├── barbar.nix
+│   │   │   ├── blankline.nix
+│   │   │   ├── cmp.nix
+│   │   │   ├── colorizer.nix
+│   │   │   ├── config.nix
+│   │   │   ├── default.nix
+│   │   │   ├── fidget.nix
+│   │   │   ├── git.nix
+│   │   │   ├── hop.nix
+│   │   │   ├── images.nix
+│   │   │   ├── lightline.nix
+│   │   │   ├── lsp.nix
+│   │   │   ├── markdown.nix
+│   │   │   ├── none-ls.nix
+│   │   │   ├── nvim-tree.nix
+│   │   │   ├── refactoring.nix
+│   │   │   ├── surround.nix
+│   │   │   ├── telescope.nix
+│   │   │   ├── toggleterm.nix
+│   │   │   ├── treesitter.nix
+│   │   │   ├── trouble.nix
+│   │   │   ├── typst-preview.nix
+│   │   │   ├── which_key.nix
+│   │   │   └── wilder.nix
+│   │   ├── qylock
+│   │   │   ├── default.nix
+│   │   │   └── qylock.nix
+│   │   ├── rofi
+│   │   │   ├── config-long.nix
+│   │   │   ├── default.nix
+│   │   │   └── rofi.nix
+│   │   ├── scripts
+│   │   │   ├── cpuinfo.sh
+│   │   │   ├── default.nix
+│   │   │   ├── emopicker9000.nix
+│   │   │   ├── keybinds.nix
+│   │   │   ├── rofi-launcher.nix
+│   │   │   ├── screenshootin.nix
+│   │   │   ├── task-waybar.nix
+│   │   │   └── web-search.nix
+│   │   ├── wlogout
+│   │   │   ├── icons
+│   │   │   │   ├── hibernate.png
+│   │   │   │   ├── lock.png
+│   │   │   │   ├── logout.png
+│   │   │   │   ├── reboot.png
+│   │   │   │   ├── shutdown.png
+│   │   │   │   └── suspend.png
+│   │   │   └── default.nix
+│   │   ├── bash.nix
+│   │   ├── bat.nix
+│   │   ├── btop.nix
+│   │   ├── default.nix
+│   │   ├── emoji.nix
+│   │   ├── gh.nix
+│   │   ├── git.nix
+│   │   ├── gtk.nix
+│   │   ├── kitty.nix
+│   │   ├── qt.nix
+│   │   ├── stylix.nix
+│   │   ├── swaync.nix
+│   │   ├── virtmanager.nix
+│   │   ├── waybar.nix
+│   │   ├── xdg.nix
+│   │   └── zsh.nix
+│   └── default.nix
+├── profiles
+│   └── macbook
+│       ├── default.nix
+│       └── userOptions.nix
+├── wallpapers
+│   ├── Anime-Lanscape.webp
+│   ├── dark_angel_as_hacker.png
+│   ├── Hacker_Wallpaper.jpg
+│   ├── hacker_woman.png
+│   └── Legend_of_Zelda.png
+├── 1
+├── flake.lock
+├── flake.nix
+├── hardware-configuration.nix
+├── nixfail.txt
+├── nixfail2.txt
+├── Nixtree
+├── ReadMe.md
+└── trace.log

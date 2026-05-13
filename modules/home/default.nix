@@ -8,7 +8,6 @@
     ./git.nix
     ./gtk.nix
     ./hyprland
-    ./qylock
     ./kitty.nix
     ./nixvim
     ./rofi
