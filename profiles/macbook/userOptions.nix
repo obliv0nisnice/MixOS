@@ -14,7 +14,6 @@
 
   ];
 
-  hardware.asahi.peripheralFirmwareDirectory = /boot/asahi;
 
   machineProfiles = {
     allowUnsupported.enable = true;
@@ -36,5 +35,10 @@
   NASMount.enable = true;
   fingerprint.enable = true;
   services.nohang.enable = true;
+
+  programs.qylock = {
+    enable = true;
+    theme = "nier-automata"; # optional, this is the default
+  };
 
 }
