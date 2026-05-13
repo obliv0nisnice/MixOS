@@ -81,13 +81,9 @@ in {
     rofimoji
 
     # 3D
-    (pkgs.blender.overrideAttrs (old: {
-    nativeBuildInputs = (old.nativeBuildInputs or []) ++ [ pkgs.sse2neon ];
-    buildInputs = (old.buildInputs or []) ++ [ pkgs.sse2neon ];
-    cmakeFlags = (old.cmakeFlags or []) ++ [
-      "-DSSE2NEON_INCLUDE_DIR=${pkgs.sse2neon}/include"
-    ];
-    }))
+    unityhub
+
+    heroic
 
     typst
 
