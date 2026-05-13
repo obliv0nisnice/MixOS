@@ -6,8 +6,6 @@
 }:
 let
   unblobPatched = pkgs.unblob.overrideAttrs (old: {
-    # These handlers currently report sandbox-specific failures in nixpkgs'
-    # check environment, while the rest of the suite still passes.
     disabledTests = (old.disabledTests or []) ++ [
       "test_all_handlers[filesystem.romfs]"
       "test_all_handlers[filesystem.yaffs]"
@@ -83,8 +81,6 @@ in {
     # 3D
     unityhub
 
-    heroic
-
     typst
 
     #file manager
@@ -111,7 +107,7 @@ in {
     # RemoteScanning
     openscap
 
-    # Pentesting stuff
+    # Uni Pentesting stuff
     python313Packages.impacket
     file
     medusa
@@ -132,13 +128,16 @@ in {
     docker-client
     libvirt
     virt-viewer
+
   ] ++ lib.optionals config.machineProfiles.comms.enable [
     thunderbird
     vesktop
     teams-for-linux
+
   ] ++ lib.optionals config.machineProfiles.office.enable [
     libreoffice
     anki
+
   ] ++ lib.optionals config.machineProfiles.vpn.enable [
     mullvad-vpn
     netbird

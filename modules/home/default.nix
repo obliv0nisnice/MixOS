@@ -1,15 +1,14 @@
 {...}: {
   imports = [
-    #./bash.nix
     ./bat.nix
     ./btop.nix
     ./emoji.nix #TODO: ersetzen mit rofimoji
     ./fastfetch
     ./gh.nix
-    #./ghostty.nix
     ./git.nix
     ./gtk.nix
     ./hyprland
+    ./qylock
     ./kitty.nix
     ./nixvim
     ./rofi

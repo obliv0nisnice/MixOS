@@ -21,7 +21,7 @@
     security.enable = false;
     virtualization.enable = true;
     vpn.enable = true;
-    x86Emulation.enable = false;
+    x86Emulation.enable = true;
     office.enable = true;
     comms.enable = true;
     desktopIntegration.enable = true;
