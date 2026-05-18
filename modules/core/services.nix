@@ -64,12 +64,16 @@ in {
       }
     })
   '';
-  # Register Hyprland as a SDDM session
   programs.hyprland.enable = true;
 
   security.pam.services.qylock = {
     text = ''
       auth include login
     '';
+  };
+
+  services.xserver.xkb = {
+    layout = keyboardLayout;
+    variant = "";
   };
 }
