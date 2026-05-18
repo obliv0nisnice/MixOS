@@ -1,6 +1,6 @@
 {
   # Git Configuration ( For Pulling Software Repos )
-  gitUsername = "obliv0nisnice";
+  gitUsername = "oblivion";#"obliv0nisnice";
   gitEmail = "anrufen_nahm0p@icloud.com";
 
   # Hyprland Settings

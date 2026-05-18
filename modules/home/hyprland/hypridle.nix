@@ -6,15 +6,15 @@
       enable = true;
       settings = {
         general = { 
-          before_sleep_cmd = "hyprlock";
+          before_sleep_cmd = "qylock-lock";
           after_sleep_cmd = "hyprctl dispatch dpms on";
           ignore_dbus_inhibit = false;
-          lock_cmd = "hyprlock";
+          lock_cmd = "qylock-lock";
           };
         listener = [
           {
             timeout = 900;
-            on-timeout = "hyprlock";
+            on-timeout = "qylock-lock";
           }
           {
             timeout = 1200;

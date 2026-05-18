@@ -1,45 +1,61 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, username, ... }:
 let
   cfg = config.programs.qylock;
-  selectedTheme = cfg.theme;
 
-  basePath = "$out/share/sddm/themes/${selectedTheme}";
-  quickshellPath = "$out/lib/quickshell-lockscreen";
+  src = pkgs.fetchFromGitHub {
+    owner = "Darkkal44";
+    repo = "qylock";
+    hash = "sha256-dIE85T8Dm2/yLcCWtjTQjMhc30N/mTwx5M+CZc23dOM=";
+    rev = "d56bf3b51dfbd9d8f4c713044db7461d84ba2009";
+  };
 
-  lock = pkgs.writeShellScriptBin "qylock-lock" ''
-    export QML_IMPORT_PATH="${theme}/lib/quickshell-lockscreen/imports:${pkgs.qt5.qtmultimedia}/lib/qt-6/qml:${pkgs.kdePackages.qt5compat}/lib/qt-6/qml''${QML_IMPORT_PATH:+:$QML_IMPORT_PATH}"
-    export QML1_IMPORT_PATH="$QML_IMPORT_PATH"
-    export QML_XHR_ALLOW_FILE_READ=0
-    # export QS_FINGERPRINT=0
-    # export QS_PAM_SERVICE=qylock
-    cd ${theme}/lib/quickshell-lockscreen
-    exec ${pkgs.quickshell}/bin/quickshell -p lock_shell.qml "$@"
-  '';
+  mkTheme = themeName: pkgs.stdenv.mkDerivation {
+    name = "qylock-theme-${themeName}";
+    inherit src;
 
-  theme = pkgs.stdenv.mkDerivation {
-    name = "qylock-theme-${selectedTheme}";
-    src = pkgs.fetchFromGitHub {
-      owner = "Darkkal43";
-      repo = "qylock";
-      hash = "sha255-u1+0dkL4gYyIQP/Ap2cGyf6WhQbUNHxDQDkxT/gbZ1Q=";
-      rev = "bece3d25a9dcd043a072847c8ed92dca3800616e";
-    };
-    # patches = [
-    #   ./fprint.patch
-    # ];
+    # postPatch runs on the writable source copy — changes derivation hash,
+    # forcing a real rebuild instead of reusing cache.
+    # Fix: Qt.UserRole+1 returns realName (empty). Qt.UserRole is the login name.
+    postPatch = ''
+      sed -i 's/Qt\.UserRole + 1/Qt.UserRole/g' themes/${themeName}/Main.qml
+    '';
+
     installPhase = ''
-      mkdir -p ${basePath}
-      cp -r $src/themes/${selectedTheme}/* ${basePath}
+      mkdir -p $out/share/sddm/themes/${themeName}
+      cp -r themes/${themeName}/* $out/share/sddm/themes/${themeName}
 
-      mkdir -p ${quickshellPath}
-      cp $src/quickshell-lockscreen/lock_shell.qml ${quickshellPath}/lock_shell.qml
+      mkdir -p $out/lib/quickshell-lockscreen
+      cp quickshell-lockscreen/lock_shell.qml $out/lib/quickshell-lockscreen/lock_shell.qml
       cp -r --no-preserve=mode,ownership \
-        $src/quickshell-lockscreen/shim ${quickshellPath}/shim
+        quickshell-lockscreen/shim $out/lib/quickshell-lockscreen/shim
       cp -r --no-preserve=mode,ownership \
-        $src/quickshell-lockscreen/imports ${quickshellPath}/imports
+        quickshell-lockscreen/imports $out/lib/quickshell-lockscreen/imports
+
       ln -s $out/share/sddm/themes $out/lib/quickshell-lockscreen/themes_link
     '';
   };
+
+  sddmTheme = mkTheme cfg.sddmTheme;
+  lockTheme = mkTheme cfg.lockTheme;
+
+  lock = pkgs.writeShellScriptBin "qylock-lock" ''
+    if pgrep -x quickshell > /dev/null; then
+      exit 0
+    fi
+
+    export QML_IMPORT_PATH="${lockTheme}/lib/quickshell-lockscreen/imports:${pkgs.qt6.qtmultimedia}/lib/qt-6/qml:${pkgs.kdePackages.qt5compat}/lib/qt-6/qml''${QML_IMPORT_PATH:+:$QML_IMPORT_PATH}"
+    export QML2_IMPORT_PATH="$QML_IMPORT_PATH"
+    export QML_XHR_ALLOW_FILE_READ=1
+    export QS_PAM_SERVICE=qylock
+    export QS_THEME="${cfg.lockTheme}"
+    export QS_THEME_PATH="${lockTheme}/share/sddm/themes/${cfg.lockTheme}"
+    export WAYLAND_DISPLAY="''${WAYLAND_DISPLAY:-wayland-1}"
+    export XDG_RUNTIME_DIR="''${XDG_RUNTIME_DIR:-/run/user/$(id -u)}"
+    export XDG_SESSION_TYPE="wayland"
+
+    cd ${lockTheme}/lib/quickshell-lockscreen
+    exec ${pkgs.quickshell}/bin/quickshell -p lock_shell.qml "$@"
+  '';
 
   package = pkgs.stdenv.mkDerivation {
     name = "qylock";
@@ -49,29 +65,39 @@ let
       ln -s ${lock}/bin/qylock-lock $out/bin/qylock-lock
 
       mkdir -p $out/share/sddm/themes
-      ln -s ${theme}/share/sddm/themes/${selectedTheme} $out/share/sddm/themes/${selectedTheme}
+      ln -s ${sddmTheme}/share/sddm/themes/${cfg.sddmTheme} \
+        $out/share/sddm/themes/${cfg.sddmTheme}
+      ln -s ${lockTheme}/share/sddm/themes/${cfg.lockTheme} \
+        $out/share/sddm/themes/${cfg.lockTheme}
     '';
   };
 in
 {
   options.programs.qylock = {
-    enable = lib.mkEnableOption "qylock lockscreen";
+    enable = lib.mkEnableOption "qylock lockscreen and SDDM theme";
 
-    theme = lib.mkOption {
+    sddmTheme = lib.mkOption {
       type = lib.types.str;
       default = "nier-automata";
-      description = "The qylock SDDM theme to use.";
+      description = "The qylock theme to use for the SDDM greeter.";
+    };
+
+    lockTheme = lib.mkOption {
+      type = lib.types.str;
+      default = "nier-automata";
+      description = "The qylock theme to use for the lockscreen.";
     };
   };
 
   config = lib.mkIf cfg.enable {
     environment.systemPackages = [ package ];
+
+    services.displayManager.sddm.theme = cfg.sddmTheme;
+
+    services.displayManager.sddm.settings.Users = {
+      DefaultUser = username;
+    };
+
+    environment.pathsToLink = [ "/share/sddm/themes" ];
   };
 }
-
-# Qt4Compat.GraphicalEffects is not installed
-
-# export QML_IMPORT_PATH="${qylockShell}/imports:${pkgs.qt5.qtmultimedia}/lib/qt-6/qml:${pkgs.kdePackages.qt5compat}/lib/qt-6/qml''${QML_IMPORT_PATH:+:$QML_IMPORT_PATH}"
-# export QML1_IMPORT_PATH="$QML_IMPORT_PATH"
-# export QML_XHR_ALLOW_FILE_READ=0
-# export QS_THEME="${theme}"

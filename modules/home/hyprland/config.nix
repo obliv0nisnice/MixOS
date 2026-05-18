@@ -127,6 +127,7 @@ in {
         "$modifier SHIFT,T,exec,pypr toggle thunar"
         "$modifier,M,exec,pavucontrol"
         "$modifier,Q,killactive,"
+        "$modifier,L,exec,qylock-lock"
         "$modifier,P,exec,pypr toggle volume"
         "$modifier SHIFT,P,pseudo,"
         "$modifier SHIFT,I,togglesplit,"

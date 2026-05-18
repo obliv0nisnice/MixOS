@@ -17,17 +17,20 @@ in {
     gvfs.enable = config.machineProfiles.desktopIntegration.enable;
     openssh.enable = config.machineProfiles.remoteAccess.enable;
     blueman.enable = true;
-    #resolved.enable = true;
 
-    greetd = {
+    displayManager.sddm = {
       enable = true;
-      settings = {
-        default_session = {
-          user = username;
-          command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd start-hyprland"; # start Hyprland with a TUI login manager
-        };
-      };
+      wayland.enable = true;
+      package = pkgs.kdePackages.sddm; # Qt6 SDDM — required for qylock themes
+      extraPackages = with pkgs.kdePackages; [
+        qt5compat    # provides Qt5Compat.GraphicalEffects used by qylock themes
+        qtmultimedia # for video backgrounds
+        qtsvg
+      ];
     };
+
+    displayManager.defaultSession = "hyprland";
+
     gnome.gnome-keyring.enable = true;
     avahi = {
       enable = config.machineProfiles.networkDiscovery.enable;
@@ -61,7 +64,10 @@ in {
       }
     })
   '';
-  security.pam.services.swaylock = {
+  # Register Hyprland as a SDDM session
+  programs.hyprland.enable = true;
+
+  security.pam.services.qylock = {
     text = ''
       auth include login
     '';

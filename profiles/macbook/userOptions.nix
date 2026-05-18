@@ -38,7 +38,8 @@
 
   programs.qylock = {
     enable = true;
-    theme = "nier-automata"; # optional, this is the default
-  };
+    sddmTheme = "nier-automata";
+    lockTheme = "pixel-hollowknight";
+};
 
 }

@@ -30,7 +30,7 @@
       }
       {
         "label" = "lock";
-        "action" = "sleep 1; hyprlock";
+        "action" = "sleep 1; qylock-lock";
         "text" = "Lock";
         "keybind" = "l";
       }
