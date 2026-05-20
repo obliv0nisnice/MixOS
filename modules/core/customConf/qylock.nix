@@ -2,12 +2,16 @@
 let
   cfg = config.programs.qylock;
 
+
+
   src = pkgs.fetchFromGitHub {
     owner = "Darkkal44";
     repo = "qylock";
     hash = "sha256-dIE85T8Dm2/yLcCWtjTQjMhc30N/mTwx5M+CZc23dOM=";
     rev = "d56bf3b51dfbd9d8f4c713044db7461d84ba2009";
   };
+
+  hollowKnightBg = ../../../wallpapers/hollowknight/bg.mp4;
 
   mkTheme = themeName: pkgs.stdenv.mkDerivation {
     name = "qylock-theme-${themeName}";
@@ -23,7 +27,9 @@ let
     installPhase = ''
       mkdir -p $out/share/sddm/themes/${themeName}
       cp -r themes/${themeName}/* $out/share/sddm/themes/${themeName}
-
+      ${lib.optionalString (themeName == "hollow-knight") ''
+        cp ${hollowKnightBg} $out/share/sddm/themes/${themeName}/bg.mp4
+      ''}
       mkdir -p $out/lib/quickshell-lockscreen
       cp quickshell-lockscreen/lock_shell.qml $out/lib/quickshell-lockscreen/lock_shell.qml
       cp -r --no-preserve=mode,ownership \
