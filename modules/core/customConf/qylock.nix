@@ -11,15 +11,12 @@ let
     rev = "d56bf3b51dfbd9d8f4c713044db7461d84ba2009";
   };
 
-  hollowKnightBg = ../../../wallpapers/hollowknight/bg.mp4;
+  #hollowKnightBg = ../../../wallpapers/hollowknight/bg.mp4;
 
   mkTheme = themeName: pkgs.stdenv.mkDerivation {
     name = "qylock-theme-${themeName}";
     inherit src;
 
-    # postPatch runs on the writable source copy — changes derivation hash,
-    # forcing a real rebuild instead of reusing cache.
-    # Fix: Qt.UserRole+1 returns realName (empty). Qt.UserRole is the login name.
     postPatch = ''
       sed -i 's/Qt\.UserRole + 1/Qt.UserRole/g' themes/${themeName}/Main.qml
     '';
@@ -27,9 +24,7 @@ let
     installPhase = ''
       mkdir -p $out/share/sddm/themes/${themeName}
       cp -r themes/${themeName}/* $out/share/sddm/themes/${themeName}
-      ${lib.optionalString (themeName == "hollow-knight") ''
-        cp ${hollowKnightBg} $out/share/sddm/themes/${themeName}/bg.mp4
-      ''}
+            
       mkdir -p $out/lib/quickshell-lockscreen
       cp quickshell-lockscreen/lock_shell.qml $out/lib/quickshell-lockscreen/lock_shell.qml
       cp -r --no-preserve=mode,ownership \
@@ -49,6 +44,9 @@ let
       exit 0
     fi
 
+    export QT_PLUGIN_PATH="${pkgs.kdePackages.qtmultimedia}/lib/qt-6/plugins''${QT_PLUGIN_PATH:+:$QT_PLUGIN_PATH}"
+    export GST_PLUGIN_SYSTEM_PATH_1_0="${pkgs.gst_all_1.gstreamer}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-base}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-good}/lib/gstreamer-1.0:${pkgs.gst_all_1.gst-plugins-bad}/lib/gstreamer-1.0"
+  
     export QML_IMPORT_PATH="${lockTheme}/lib/quickshell-lockscreen/imports:${pkgs.qt6.qtmultimedia}/lib/qt-6/qml:${pkgs.kdePackages.qt5compat}/lib/qt-6/qml''${QML_IMPORT_PATH:+:$QML_IMPORT_PATH}"
     export QML2_IMPORT_PATH="$QML_IMPORT_PATH"
     export QML_XHR_ALLOW_FILE_READ=1
